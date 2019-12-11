@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         float[] points = new float[2];
-//        points[0]+=mView.getScrollX()-mView.getLeft();
-//        points[1]+=mView.getScrollY()-mView.getTop();
+        //源码中使用的这种方式其实也是将触点坐标转换为相对于自己的左上角，因为她在判断范围的时候（pointInView）
+        //相当于是（0，0）到（right-left,bottom-top）
+        //points[0]+=mView.getScrollX()-mView.getLeft();
+        //points[1]+=mView.getScrollY()-mView.getTop();
         Log.e("abc",points[0]+"  "+points[1]);
         progress=progress*2;
         mView.setRotation(progress);
